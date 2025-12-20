@@ -1,0 +1,10 @@
+django==6.0
+psycopg[binary]
+ipython
+gunicorn
+sentry-sdk[django]
+yt-dlp
+Requests==2.31.0
+click==8.1.8
+jmespath==1.0.1
+loguru==0.7.3

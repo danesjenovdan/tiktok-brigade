@@ -1,0 +1,510 @@
+{
+  "Mainstream mediji": [
+    {
+      "name": "Delo",
+      "url": "https://www.tiktok.com/@delo.si?lang=en"
+    },
+    {
+      "name": "24ur_com",
+      "url": "https://www.tiktok.com/@24urcom?lang=en"
+    },
+    {
+      "name": "Val202",
+      "url": "https://www.tiktok.com/@val202_radio?lang=en"
+    },
+    {
+      "name": "rtvslo",
+      "url": "https://www.tiktok.com/@rtvsloinfo?lang=en"
+    },
+    {
+      "name": "PlanetTV",
+      "url": "https://www.tiktok.com/@planet.televizija?lang=en"
+    },
+    {
+      "name": "SiolNEWS",
+      "url": "https://www.tiktok.com/@siol.net?lang=en"
+    },
+    {
+      "name": "n1slovenija",
+      "url": "https://www.tiktok.com/@n1slovenija?lang=en"
+    },
+    {
+      "name": "TarcaRTVSLO",
+      "url": "https://www.tiktok.com/@tarcartvslo?lang=en"
+    },
+    {
+      "name": "Zurnal_24",
+      "url": "https://www.tiktok.com/@zurnal24?lang=en"
+    },
+    {
+      "name": "STA_novice",
+      "url": "https://www.tiktok.com/@sta_video?lang=en"
+    },
+    {
+      "name": "SlovenskeNovice",
+      "url": "https://www.tiktok.com/@slovenskenovice?lang=en"
+    },
+    {
+      "name": "vecer",
+      "url": "https://www.tiktok.com/@casnikvecer?lang=en"
+    },
+    {
+      "name": "SportTVSlovenia",
+      "url": "https://www.tiktok.com/@sporttvslovenia?lang=en"
+    },
+    {
+      "name": "Metropolitan",
+      "url": "https://www.tiktok.com/@metropolitan.si?lang=en"
+    }
+  ],
+  "Desni mediji": [
+    {
+      "name": "RadioOgnjisce",
+      "url": "https://www.tiktok.com/@radio.ognjisce?lang=en"
+    },
+    {
+      "name": "RevijaReporter",
+      "url": "https://www.tiktok.com/@reporter.si?lang=en"
+    },
+    {
+      "name": "Nova24TV",
+      "url": "https://www.tiktok.com/@nova24tv?lang=en"
+    },
+    {
+      "name": "e_maribor",
+      "url": "https://www.tiktok.com/@portal.emaribor?lang=en"
+    }
+  ],
+  "Alt mediji": [
+    {
+      "name": "necenzurirano_",
+      "url": "https://www.tiktok.com/@necenzurirano.si?lang=en"
+    },
+    {
+      "name": "_ostro_",
+      "url": "https://www.tiktok.com/@ostro.si?lang=en"
+    },
+    {
+      "name": "radiostudent",
+      "url": "https://www.tiktok.com/@radiostudent?lang=en"
+    },
+    {
+      "name": "RŠ znanost",
+      "url": "https://www.tiktok.com/@znanstveniradiostudent"
+    },
+    {
+      "name": "RŠ APR",
+      "url": "https://www.tiktok.com/@aprradiostudent"
+    }
+  ],
+  "Liberalna scena": [
+    {
+      "name": "IEBergant",
+      "url": "https://www.tiktok.com/@iebergant?lang=en"
+    },
+    {
+      "name": "pengovsky",
+      "url": "https://www.tiktok.com/@pengovsky?lang=en"
+    },
+    {
+      "name": "ManicaAmbrozic",
+      "url": "https://www.tiktok.com/@manica.ambrozic"
+    },
+    {
+      "name": "Caspersek",
+      "url": "https://www.tiktok.com/@caspersek2"
+    },
+    {
+      "name": "praprotnix",
+      "url": "https://www.tiktok.com/@praprotnix?lang=en"
+    },
+    {
+      "name": "AndrejaLoncar",
+      "url": "https://www.tiktok.com/@andreja.loncar.n1?lang=en"
+    },
+    {
+      "name": "GregorTrebusak",
+      "url": "https://www.tiktok.com/@gregorsvet?lang=en"
+    },
+    {
+      "name": "JurePoglajen",
+      "url": "https://www.tiktok.com/@jurepoglajen?lang=en"
+    },
+    {
+      "name": "_MegWhite_",
+      "url": "https://www.tiktok.com/@megwhite16?lang=en"
+    },
+    {
+      "name": "ninagaspari",
+      "url": "https://www.tiktok.com/@radovednice?lang=en"
+    },
+    {
+      "name": "DamjanJagar",
+      "url": "https://www.tiktok.com/@damjan.jagar?lang=en"
+    },
+    {
+      "name": "aljoša novak",
+      "url": "https://www.tiktok.com/@aljosanovak?lang=en"
+    },
+    {
+      "name": "Sara Bajec",
+      "url": "https://www.tiktok.com/@sara.bajec"
+    }
+  ],
+  "Liberalna / leva propaganda": [
+    {
+      "name": "iskra",
+      "url": "https://www.tiktok.com/@studentska.iskra?lang=en"
+    },
+    {
+      "name": "vladozlom",
+      "url": "https://www.tiktok.com/@vladozlom?lang=en"
+    },
+    {
+      "name": "mladslovenec",
+      "url": "https://www.tiktok.com/@mladoslovenec?lang=en"
+    },
+    {
+      "name": "slovenski komar",
+      "url": "https://www.tiktok.com/@slovenskikomar"
+    },
+    {
+      "name": "Menze zdaj",
+      "url": "https://www.tiktok.com/@menze_zdaj"
+    }
+  ],
+  "Leva scena": [
+    {
+      "name": "Rdeča kuga",
+      "url": "https://www.tiktok.com/@rdecakuga"
+    },
+    {
+      "name": "Rdeča minuta",
+      "url": "https://www.tiktok.com/@rdecaminuta"
+    },
+    {
+      "name": "ppporocila",
+      "url": "https://www.tiktok.com/@ppporocila?lang=en"
+    },
+    {
+      "name": "Red sumi",
+      "url": "https://www.tiktok.com/@zally_ka?lang=en"
+    },
+    {
+      "name": "Rdeča pesa",
+      "url": "https://www.tiktok.com/@rdecapesa.com"
+    },
+    {
+      "name": "Tara Kristan",
+      "url": "https://www.tiktok.com/@tarrakristan"
+    },
+    {
+      "name": "Jan Vajgl",
+      "url": "https://www.tiktok.com/@mumintr0l"
+    },
+    {
+      "name": "Demokratura",
+      "url": "https://www.tiktok.com/@demokratura"
+    },
+    {
+      "name": "Tovariš Ivan",
+      "url": "https://www.tiktok.com/@tovarisivan"
+    }
+  ],
+  "Konzervativna scena": [
+    {
+      "name": "ZigaTurk",
+      "url": "https://www.tiktok.com/@ziga.turk?lang=en"
+    },
+    {
+      "name": "TinoMamic",
+      "url": "https://www.tiktok.com/@tino.mamic?lang=en"
+    },
+    {
+      "name": "Mirko_Mayer",
+      "url": "https://www.tiktok.com/@mirkomayer5?lang=en"
+    },
+    {
+      "name": "Zala Klopcic",
+      "url": "https://www.tiktok.com/@zalaklopcic?lang=en"
+    },
+    {
+      "name": "Karin Planinšek",
+      "url": "https://www.tiktok.com/@karin.planinsek"
+    },
+    {
+      "name": "Iskreno podcast",
+      "url": "https://www.tiktok.com/@iskreno.podkast"
+    },
+    {
+      "name": "Klea Jeretič",
+      "url": "https://www.tiktok.com/@klea_jeretic"
+    },
+    {
+      "name": "Erika Planinšec",
+      "url": "https://www.tiktok.com/@erikaplaninsec"
+    }
+  ],
+  "Konzervativna propaganda": [
+    {
+      "name": "Politka na eks",
+      "url": "https://www.tiktok.com/@politika_na_eks?lang=en"
+    },
+    {
+      "name": "Odkrita slovenija",
+      "url": "https://www.tiktok.com/@odkritaslovenija?lang=en"
+    },
+    {
+      "name": "Prava Slovenija",
+      "url": "https://www.tiktok.com/@prava.slovenija?lang=en"
+    },
+    {
+      "name": "slovenska nostalgija",
+      "url": "https://www.tiktok.com/@slovenskanostalgija"
+    },
+    {
+      "name": "velika slovenija",
+      "url": "https://www.tiktok.com/@velika.slovenija"
+    },
+    {
+      "name": "vlada pada",
+      "url": "https://www.tiktok.com/@vlada.pada"
+    }
+  ],
+  "Vladni politiki": [
+    {
+      "name": "strankalevica",
+      "url": "https://www.tiktok.com/@levicastranka?lang=en"
+    },
+    {
+      "name": "Asta Vrečko",
+      "url": "https://www.tiktok.com/@asta.vrecko "
+    },
+    {
+      "name": "LukaMesec",
+      "url": "https://www.tiktok.com/@lukamesec_levica?lang=en"
+    },
+    {
+      "name": "Matevj Vatovec",
+      "url": "https://www.tiktok.com/@matejtvatovec"
+    },
+    {
+      "name": "MatjaNemec",
+      "url": "https://www.tiktok.com/@matjaz.nemec?lang=en"
+    },
+    {
+      "name": "nmusar",
+      "url": "https://www.tiktok.com/@natasa.pirc.musar?lang=en"
+    },
+    {
+      "name": "Gibanje_Svoboda",
+      "url": "https://www.tiktok.com/@gibanje.svoboda?lang=en"
+    },
+    {
+      "name": "Svoboda mladi",
+      "url": "https://www.tiktok.com/@svoboda.mladi?lang=en"
+    },
+    {
+      "name": "Mladi forum SD",
+      "url": "https://www.tiktok.com/@mladi.forum.sd?lang=en"
+    },
+    {
+      "name": "Jernej Štromajer",
+      "url": "https://www.tiktok.com/@jernej.stromajer"
+    }
+  ],
+  "Opozicijski politiki": [
+    {
+      "name": "JJansaSDS",
+      "url": "https://www.tiktok.com/@jjansa_sds?lang=en"
+    },
+    {
+      "name": "BrankoGrims1",
+      "url": "https://www.tiktok.com/@branko.grims.eu?lang=en"
+    },
+    {
+      "name": "ANJABAHZIBERT",
+      "url": "https://www.tiktok.com/@anjabahzibert?lang=en"
+    },
+    {
+      "name": "aleshojs",
+      "url": "https://www.tiktok.com/@ales.hojs?lang=en"
+    },
+    {
+      "name": "AnzeLog",
+      "url": "https://www.tiktok.com/@anze.logar?lang=en"
+    },
+    {
+      "name": "jelka_godec",
+      "url": "https://www.tiktok.com/@jelkagodec?lang=en"
+    },
+    {
+      "name": "DKaloh",
+      "url": "https://www.tiktok.com/@kalohdejan?lang=en"
+    },
+    {
+      "name": "strankaSDS",
+      "url": "https://www.tiktok.com/@strankasds?lang=en"
+    },
+    {
+      "name": "miro5ek",
+      "url": "https://www.tiktok.com/@pirometek?lang=en"
+    },
+    {
+      "name": "organizacijaSDM",
+      "url": "https://www.tiktok.com/@sdm_organizacija?lang=en"
+    },
+    {
+      "name": "NovaSlovenija",
+      "url": "https://www.tiktok.com/@nova.slovenija?lang=en"
+    },
+    {
+      "name": "JernejVrtovec",
+      "url": "https://www.tiktok.com/@jernejvrtovec?lang=en"
+    },
+    {
+      "name": "jciglerkralj",
+      "url": "https://www.tiktok.com/@kraljzapredsednika?lang=en"
+    },
+    {
+      "name": "cernigoj_andrej",
+      "url": "https://www.tiktok.com/@andrej.cernigoj?lang=en"
+    },
+    {
+      "name": "PocivalsekZ",
+      "url": "https://www.tiktok.com/@zdravkopocivalsek?lang=en"
+    },
+    {
+      "name": "ZmagoPlemeniti",
+      "url": "https://www.tiktok.com/@zmago.predsednik?lang=en"
+    },
+    {
+      "name": "KanglerFranc",
+      "url": "https://www.tiktok.com/@franc_kangler?lang=en"
+    },
+    {
+      "name": "Aleksander rebersek",
+      "url": "https://www.tiktok.com/@alexrebersek?lang=en"
+    },
+    {
+      "name": "Zoran Stevanović",
+      "url": "https://www.tiktok.com/@zoranresnica?lang=en"
+    },
+    {
+      "name": "Dejan Kaloh",
+      "url": "https://www.tiktok.com/@kalohdejan"
+    },
+    {
+      "name": "Stranka Straža",
+      "url": "https://www.tiktok.com/@stranka.straza?lang=en"
+    },
+    {
+      "name": "Demokrati",
+      "url": "https://www.tiktok.com/@demokrati_slo?lang=en"
+    },
+    {
+      "name": "Andrej Hoivik",
+      "url": "https://www.tiktok.com/@andrejhoivik?lang=en"
+    }
+  ],
+  "Vladni računi": [
+    {
+      "name": "vladaRS",
+      "url": "https://www.tiktok.com/@gov.si.tok?lang=en"
+    },
+    {
+      "name": "MinZdravje",
+      "url": "https://www.tiktok.com/@minzdravja?lang=en"
+    },
+    {
+      "name": "policija_si",
+      "url": "https://www.tiktok.com/@policija.slovenija?lang=en"
+    },
+    {
+      "name": "Slovenskavojska",
+      "url": "https://www.tiktok.com/@postanivojak?lang=en"
+    },
+    {
+      "name": "zagovornik",
+      "url": "https://www.tiktok.com/@zagovornik?lang=en"
+    },
+    {
+      "name": "digitalSLO",
+      "url": "https://www.tiktok.com/@digitalslo?lang=en"
+    }
+  ],
+  "Evroposlanci": [
+    {
+      "name": "Branko Grims",
+      "url": "https://www.tiktok.com/@branko.grims.eu"
+    },
+    {
+      "name": "Matjaž Nemec",
+      "url": "https://www.tiktok.com/@matjaz.nemec"
+    }
+  ],
+  "Civilna družba": [
+    {
+      "name": "8Marec",
+      "url": "https://www.tiktok.com/@institut8.marec?lang=en"
+    },
+    {
+      "name": "danesjenovdan",
+      "url": "https://www.tiktok.com/@danesjenovdan?lang=en"
+    },
+    {
+      "name": "amnesty",
+      "url": "https://www.tiktok.com/@amnestyslovenia?lang=en"
+    },
+    {
+      "name": "Prebudilka",
+      "url": "https://www.tiktok.com/@prebudilka?lang=en"
+    },
+    {
+      "name": "Zavod Nefiks",
+      "url": "https://www.tiktok.com/@zavod_nefiks"
+    },
+    {
+      "name": "IDŠ",
+      "url": "https://www.tiktok.com/@institutdelavskestudije"
+    },
+    {
+      "name": "MZZP",
+      "url": "https://www.tiktok.com/@mzpptok"
+    }
+  ],
+  "Drugo": [
+    {
+      "name": "visitljubljana",
+      "url": "https://www.tiktok.com/@visitljubljana"
+    },
+    {
+      "name": "AvtomagazinSi",
+      "url": "https://www.tiktok.com/@avto_magazin.si"
+    },
+    {
+      "name": "klemen selakovic",
+      "url": "https://www.tiktok.com/@klemenselakovic?lang=en"
+    },
+    {
+      "name": "nekoč v sloveniji",
+      "url": "https://www.tiktok.com/@nekocvsloveniji"
+    },
+    {
+      "name": "matija kovač",
+      "url": "https://www.tiktok.com/@matijakovac"
+    },
+    {
+      "name": "BorutPahor",
+      "url": "https://www.tiktok.com/@fmr.president.pahor?lang=en"
+    },
+    {
+      "name": "Peter Stankovič",
+      "url": "https://www.tiktok.com/@perostankovic"
+    },
+    {
+      "name": "Tinca Lukan",
+      "url": "https://www.tiktok.com/@tinca_lukan"
+    }
+  ]
+}
