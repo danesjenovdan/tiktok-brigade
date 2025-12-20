@@ -65,7 +65,7 @@ spec:
               mountPath: /storage
           command:
             - gunicorn
-            - tiktok-brigade.wsgi:application
+            - tiktok_brigade.wsgi:application
             - -b
             - 0.0.0.0:8000
             - --log-level

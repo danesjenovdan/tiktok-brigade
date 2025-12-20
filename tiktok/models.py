@@ -88,7 +88,7 @@ class TikTokComment(Timestampable):
     content = models.TextField()
     like_count = models.IntegerField(default=0)
     reply_count = models.IntegerField(default=0)
-    avatar_url = models.URLField(blank=True)
+    avatar_url = models.URLField(max_length=500, blank=True)
 
     # For nested replies
     parent_comment = models.ForeignKey(

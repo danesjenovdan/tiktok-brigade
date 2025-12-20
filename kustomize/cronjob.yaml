@@ -16,12 +16,13 @@ spec:
             image: tiktok-brigade
             env:
               - name: DJANGO_SETTINGS_MODULE
-                value: tiktok_brigade.settings.k8s
+                value: tiktok_brigade.settings
               - name: PYTHONUNBUFFERED
                 value: "true"
             envFrom:
               - secretRef:
                   name: tiktok-brigade-credentials
             command:
-              - ./run.sh
+              - bash
+              - run.sh
           restartPolicy: Never
