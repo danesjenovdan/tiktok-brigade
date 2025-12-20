@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('tiktok', '0002_tiktokcomment_delete_tiktokvideocomment'),
+        ("tiktok", "0002_tiktokcomment_delete_tiktokvideocomment"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='tiktokcomment',
-            name='avatar_url',
+            model_name="tiktokcomment",
+            name="avatar_url",
             field=models.URLField(blank=True, max_length=500),
         ),
     ]
