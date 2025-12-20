@@ -10,4 +10,4 @@ resources:
 images:
   - name: tiktok-brigade
     newName: rg.fr-par.scw.cloud/djnd/tiktok-brigade
-    newTag: 'latest'
+    newTag: '439d7b463b92dcef94e4afdf9087b9d1f0855133'
