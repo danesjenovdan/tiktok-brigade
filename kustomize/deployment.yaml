@@ -1,0 +1,111 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tiktok-brigade-deployment
+  labels:
+    app: tiktok-brigade
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tiktok-brigade
+  template:
+    metadata:
+      labels:
+        app: tiktok-brigade
+    spec:
+      volumes:
+        - name: tiktok-brigade-storage
+          emptyDir: {}
+      initContainers:
+        - name: collectstatic
+          image: tiktok-brigade
+          volumeMounts:
+            - name: tiktok-brigade-storage
+              mountPath: /storage
+          command:
+            - python
+            - manage.py
+            - collectstatic
+            - --no-input
+          env:
+            - name: DJANGO_STATIC_ROOT
+              value: '/storage/static'
+          envFrom:
+            - secretRef:
+                name: tiktok-brigade-credentials
+          resources:
+            requests:
+              memory: 200Mi
+              cpu: 200m
+            limits:
+              memory: 200Mi
+              cpu: 200m
+        - name: migrate
+          image: tiktok-brigade
+          command:
+            - python
+            - manage.py
+            - migrate
+          envFrom:
+            - secretRef:
+                name: tiktok-brigade-credentials
+          resources:
+            requests:
+              memory: 200Mi
+              cpu: 200m
+            limits:
+              memory: 200Mi
+              cpu: 200m
+      containers:
+        - name: tiktok-brigade
+          image: tiktok-brigade
+          volumeMounts:
+            - name: tiktok-brigade-storage
+              mountPath: /storage
+          command:
+            - gunicorn
+            - tiktok-brigade.wsgi:application
+            - -b
+            - 0.0.0.0:8000
+            - --log-level
+            - DEBUG
+            - --workers
+            - "1"
+            - --threads
+            - "3"
+            - --timeout
+            - "30"
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - secretRef:
+                name: tiktok-brigade-credentials
+          env:
+            - name: DJANGO_STATIC_ROOT
+              value: '/storage/static'
+            - name: DJANGO_STATIC_URL_BASE
+              value: "https://files.tiktok-brigade.lb.djnd.si/static/"
+          resources:
+            requests:
+              memory: 400Mi
+              cpu: 200m
+            limits:
+              memory: 400Mi
+              cpu: 200m
+        - name: tiktok-brigade-nginx
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          image: nginx:alpine
+          volumeMounts:
+            - name: tiktok-brigade-storage
+              mountPath: /usr/share/nginx/html
+          resources:
+            requests:
+              memory: 100Mi
+              cpu: 100m
+            limits:
+              memory: 100Mi
+              cpu: 100m
