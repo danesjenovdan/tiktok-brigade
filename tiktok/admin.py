@@ -1,6 +1,42 @@
+from datetime import timedelta
+
 from django.contrib import admin
+from django.utils import timezone
+from django.utils.html import format_html
 
 from .models import Group, TikTokComment, TikTokProfile, TikTokVideo
+
+
+class WeekFilter(admin.SimpleListFilter):
+    title = "teden"
+    parameter_name = "week"
+
+    def lookups(self, request, model_admin):
+        return (
+            ("last_week", "Zadnji teden (0-7 dni)"),
+            ("prev_week", "Prejšnji teden (7-14 dni)"),
+            ("2_weeks_ago", "2 tedna nazaj (14-21 dni)"),
+            ("3_weeks_ago", "3 tedne nazaj (21-28 dni)"),
+        )
+
+    def queryset(self, request, queryset):
+        now = timezone.now()
+        if self.value() == "last_week":
+            start = now - timedelta(days=7)
+            return queryset.filter(posted_at__gte=start, posted_at__lte=now)
+        elif self.value() == "prev_week":
+            start = now - timedelta(days=14)
+            end = now - timedelta(days=7)
+            return queryset.filter(posted_at__gte=start, posted_at__lt=end)
+        elif self.value() == "2_weeks_ago":
+            start = now - timedelta(days=21)
+            end = now - timedelta(days=14)
+            return queryset.filter(posted_at__gte=start, posted_at__lt=end)
+        elif self.value() == "3_weeks_ago":
+            start = now - timedelta(days=28)
+            end = now - timedelta(days=21)
+            return queryset.filter(posted_at__gte=start, posted_at__lt=end)
+        return queryset
 
 
 class TikTokCommentInline(admin.TabularInline):
@@ -74,10 +110,11 @@ class TikTokVideoAdmin(admin.ModelAdmin):
         "play_count",
         "like_count",
         "comment_count",
+        "video_url",
         "posted_at",
         "updated_at",
     ]
-    list_filter = ["profile__groups", "posted_at", "created_at"]
+    list_filter = ["profile__groups", WeekFilter, "posted_at", "created_at"]
     search_fields = ["video_id", "description", "profile__username", "profile__name"]
     autocomplete_fields = ["profile"]
     readonly_fields = ["created_at", "updated_at"]
@@ -112,8 +149,9 @@ class TikTokCommentAdmin(admin.ModelAdmin):
         "reply_count",
         "is_reply",
         "posted_at",
+        "video_url_link"
     ]
-    list_filter = ["posted_at", "created_at"]
+    list_filter = [WeekFilter, "posted_at", "created_at"]
     search_fields = [
         "comment_id",
         "author_username",
@@ -140,3 +178,10 @@ class TikTokCommentAdmin(admin.ModelAdmin):
 
     is_reply.boolean = True
     is_reply.short_description = "Reply"
+
+    def video_url_link(self, obj):
+        if obj.video and obj.video.video_url:
+            return format_html('<a href="{}" target="_blank">Link</a>', obj.video.video_url)
+        return "-"
+
+    video_url_link.short_description = "Video URL"
