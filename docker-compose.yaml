@@ -9,10 +9,10 @@ services:
     environment:
       PYTHONUNBUFFERED: 1
       DJANGO_DEBUG: "yes"
-      DJANGO_DATABASE_HOST: db
-      DJANGO_DATABASE_USER: postgres
-      DJANGO_DATABASE_PASSWORD: postgres
-      DJANGO_DATABASE_NAME: tiktok
+      DATABASE_HOST: db
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD: postgres
+      DATABASE_NAME: tiktok
     volumes:
       - ./:/app
 

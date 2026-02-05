@@ -17,7 +17,9 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from tiktok import views as tiktok_views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("export/", tiktok_views.export, name="export"),
 ]
