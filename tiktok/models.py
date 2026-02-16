@@ -106,3 +106,32 @@ class TikTokComment(Timestampable):
 
     def __str__(self):
         return f"@{self.author_username}: {self.content[:50]}"
+
+
+class Export(Timestampable):
+    """Stores exports of TikTok data to S3."""
+    
+    file = models.FileField(upload_to='exports/')
+    file_size_bytes = models.BigIntegerField(default=0)
+    
+    # Statistics from export
+    total_groups = models.IntegerField(default=0)
+    total_profiles = models.IntegerField(default=0)
+    total_videos = models.IntegerField(default=0)
+    total_comments = models.IntegerField(default=0)
+    
+    # Export metadata
+    exported_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        verbose_name = "Data Export"
+        verbose_name_plural = "Data Exports"
+        ordering = ["-exported_at"]
+    
+    def __str__(self):
+        return f"Export {self.exported_at.strftime('%Y-%m-%d %H:%M:%S')} ({self.file_size_mb:.2f} MB)"
+    
+    @property
+    def file_size_mb(self):
+        """Return file size in MB."""
+        return self.file_size_bytes / (1024 * 1024)

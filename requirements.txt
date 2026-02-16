@@ -8,3 +8,5 @@ Requests==2.31.0
 click==8.1.8
 jmespath==1.0.1
 loguru==0.7.3
+boto3==1.34.144
+django-storages

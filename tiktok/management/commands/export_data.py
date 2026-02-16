@@ -2,11 +2,13 @@ import json
 import os
 from datetime import datetime
 from pathlib import Path
+from io import BytesIO
 
 from django.core.management.base import BaseCommand
+from django.core.files.base import ContentFile
 from django.conf import settings
 
-from tiktok.models import TikTokProfile, TikTokVideo, TikTokComment, Group
+from tiktok.models import TikTokProfile, TikTokVideo, TikTokComment, Group, Export
 
 
 class Command(BaseCommand):
@@ -15,12 +17,8 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         self.stdout.write("Starting data export...")
 
-        # Prepare export directory
-        exports_dir = Path(settings.BASE_DIR) / "exports"
-        exports_dir.mkdir(exist_ok=True)
-
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        output_path = exports_dir / f"tiktok_data_{timestamp}.json"
+        filename = f"tiktok_data_{timestamp}.json"
 
         # Collect data
         self.stdout.write("Fetching profiles...")
@@ -47,39 +45,52 @@ class Command(BaseCommand):
             "comments": comments_data,
         }
 
-        # Write to file
-        self.stdout.write(f"Writing to {output_path}...")
-        with open(output_path, "w", encoding="utf-8") as f:
-            json.dump(export_data, f, indent=2, ensure_ascii=False)
-
-        file_size_mb = output_path.stat().st_size / (1024 * 1024)
+        # Convert to JSON string
+        self.stdout.write("Preparing export file...")
+        json_data = json.dumps(export_data, indent=2, ensure_ascii=False)
+        json_bytes = json_data.encode('utf-8')
+        file_size_bytes = len(json_bytes)
+        file_size_mb = file_size_bytes / (1024 * 1024)
         
-        # Delete old exports after successful new export
-        for old_file in exports_dir.glob("tiktok_data_*.json"):
-            if old_file != output_path:
-                old_file.unlink()
-                self.stdout.write(f"Deleted old export: {old_file.name}")
+        # Create Export model instance and save to S3
+        self.stdout.write("Uploading to S3...")
+        export = Export.objects.create(
+            file_size_bytes=file_size_bytes,
+            total_groups=export_data['statistics']['total_groups'],
+            total_profiles=export_data['statistics']['total_profiles'],
+            total_videos=export_data['statistics']['total_videos'],
+            total_comments=export_data['statistics']['total_comments'],
+        )
+        
+        # Save the file (will use S3 if configured)
+        export.file.save(filename, ContentFile(json_bytes), save=True)
         
         self.stdout.write(
             self.style.SUCCESS(
-                f"✓ Export complete: {output_path} ({file_size_mb:.2f} MB)"
+                f"✓ Export complete: {export.file.name} ({file_size_mb:.2f} MB)"
             )
         )
         self.stdout.write(
             self.style.SUCCESS(
-                f"  - {export_data['statistics']['total_profiles']} profiles"
+                f"  - {export.total_profiles} profiles"
             )
         )
         self.stdout.write(
             self.style.SUCCESS(
-                f"  - {export_data['statistics']['total_videos']} videos"
+                f"  - {export.total_videos} videos"
             )
         )
         self.stdout.write(
             self.style.SUCCESS(
-                f"  - {export_data['statistics']['total_comments']} comments"
+                f"  - {export.total_comments} comments"
             )
         )
+        if hasattr(export.file, 'url'):
+            self.stdout.write(
+                self.style.SUCCESS(
+                    f"  - URL: {export.file.url}"
+                )
+            )
 
     def _export_groups(self):
         """Export all groups."""

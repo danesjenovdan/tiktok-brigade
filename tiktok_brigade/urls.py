@@ -17,9 +17,15 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from tiktok import views as tiktok_views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("export/", tiktok_views.export, name="export"),
 ]
+
+# Serve media files in development (local storage)
+if settings.DEBUG and not getattr(settings, 'AWS_STORAGE_BUCKET_NAME', None):
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

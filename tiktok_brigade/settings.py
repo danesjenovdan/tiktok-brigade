@@ -141,7 +141,33 @@ USE_TZ = True
 STATIC_URL = os.getenv("DJANGO_STATIC_URL_BASE", "static/")
 STATIC_ROOT = os.getenv("DJANGO_STATIC_ROOT", os.path.join(BASE_DIR, "../static"))
 
+# Media files (user uploaded files)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# DJANGO STORAGE SETTINGS
+if os.getenv("ENABLE_S3", False) == "True":
+    DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+    AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID", "")
+    AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY", "")
+    AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_STORAGE_BUCKET_NAME", "")
+    AWS_DEFAULT_ACL = (
+        "public-read"  # if files are not public they won't show up for end users
+    )
+    AWS_QUERYSTRING_AUTH = (
+        False  # query strings expire and don't play nice with the cache
+    )
+    AWS_LOCATION = os.getenv("AWS_LOCATION", "tiktok")
+    AWS_S3_REGION_NAME = os.getenv("AWS_REGION_NAME", "fr-par")
+    AWS_S3_ENDPOINT_URL = os.getenv(
+        "AWS_S3_ENDPOINT_URL", "https://s3.fr-par.scw.cloud"
+    )
+    AWS_S3_SIGNATURE_VERSION = os.getenv("AWS_S3_SIGNATURE_VERSION", "s3v4")
+    AWS_S3_FILE_OVERWRITE = (
+        False  # don't overwrite files if uploaded with same file name
+    )
