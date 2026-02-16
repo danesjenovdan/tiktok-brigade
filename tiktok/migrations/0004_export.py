@@ -6,28 +6,36 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('tiktok', '0003_alter_tiktokcomment_avatar_url'),
+        ("tiktok", "0003_alter_tiktokcomment_avatar_url"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Export',
+            name="Export",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('file', models.FileField(upload_to='exports/')),
-                ('file_size_bytes', models.BigIntegerField(default=0)),
-                ('total_groups', models.IntegerField(default=0)),
-                ('total_profiles', models.IntegerField(default=0)),
-                ('total_videos', models.IntegerField(default=0)),
-                ('total_comments', models.IntegerField(default=0)),
-                ('exported_at', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("file", models.FileField(upload_to="exports/")),
+                ("file_size_bytes", models.BigIntegerField(default=0)),
+                ("total_groups", models.IntegerField(default=0)),
+                ("total_profiles", models.IntegerField(default=0)),
+                ("total_videos", models.IntegerField(default=0)),
+                ("total_comments", models.IntegerField(default=0)),
+                ("exported_at", models.DateTimeField(auto_now_add=True)),
             ],
             options={
-                'verbose_name': 'Data Export',
-                'verbose_name_plural': 'Data Exports',
-                'ordering': ['-exported_at'],
+                "verbose_name": "Data Export",
+                "verbose_name_plural": "Data Exports",
+                "ordering": ["-exported_at"],
             },
         ),
     ]

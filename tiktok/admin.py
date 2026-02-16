@@ -149,7 +149,7 @@ class TikTokCommentAdmin(admin.ModelAdmin):
         "reply_count",
         "is_reply",
         "posted_at",
-        "video_url_link"
+        "video_url_link",
     ]
     list_filter = [WeekFilter, "posted_at", "created_at"]
     search_fields = [
@@ -181,7 +181,9 @@ class TikTokCommentAdmin(admin.ModelAdmin):
 
     def video_url_link(self, obj):
         if obj.video and obj.video.video_url:
-            return format_html('<a href="{}" target="_blank">Link</a>', obj.video.video_url)
+            return format_html(
+                '<a href="{}" target="_blank">Link</a>', obj.video.video_url
+            )
         return "-"
 
     video_url_link.short_description = "Video URL"
@@ -196,7 +198,7 @@ class ExportAdmin(admin.ModelAdmin):
         "total_profiles",
         "total_videos",
         "total_comments",
-        "download_link"
+        "download_link",
     ]
     list_filter = ["exported_at", "created_at"]
     readonly_fields = [
@@ -210,30 +212,29 @@ class ExportAdmin(admin.ModelAdmin):
         "exported_at",
         "created_at",
         "updated_at",
-        "download_link"
+        "download_link",
     ]
     date_hierarchy = "exported_at"
     ordering = ["-exported_at"]
-    
+
     def has_add_permission(self, request):
         # Exports are created via management command, not admin
         return False
-    
+
     def has_change_permission(self, request, obj=None):
         # Exports are read-only
         return False
-    
+
     def file_size_display(self, obj):
         return f"{obj.file_size_mb:.2f} MB"
-    
+
     file_size_display.short_description = "File Size"
-    
+
     def download_link(self, obj):
         if obj.file:
             return format_html(
-                '<a href="{}" target="_blank" download>Download JSON</a>',
-                obj.file.url
+                '<a href="{}" target="_blank" download>Download JSON</a>', obj.file.url
             )
         return "-"
-    
+
     download_link.short_description = "Download"
