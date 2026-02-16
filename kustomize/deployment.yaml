@@ -91,7 +91,7 @@ spec:
               memory: 400Mi
               cpu: 200m
             limits:
-              memory: 400Mi
+              memory: 500Mi
               cpu: 200m
         - name: tiktok-brigade-nginx
           ports:
