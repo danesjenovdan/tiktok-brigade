@@ -85,7 +85,7 @@ spec:
             - name: DJANGO_STATIC_ROOT
               value: '/storage/static'
             - name: DJANGO_STATIC_URL_BASE
-              value: "https://files.tiktok-brigade.lb.djnd.si/static/"
+              value: "https://files.tiktok-brigade.danesjenovdan.si/static/"
           resources:
             requests:
               memory: 400Mi
