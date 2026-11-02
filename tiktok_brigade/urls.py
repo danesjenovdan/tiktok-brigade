@@ -15,10 +15,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.contrib import admin
-from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib import admin
+from django.urls import path
+
 from tiktok import views as tiktok_views
 
 urlpatterns = [
@@ -27,5 +28,5 @@ urlpatterns = [
 ]
 
 # Serve media files in development (local storage)
-if settings.DEBUG and not getattr(settings, 'AWS_STORAGE_BUCKET_NAME', None):
+if settings.DEBUG and not getattr(settings, "AWS_STORAGE_BUCKET_NAME", None):
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

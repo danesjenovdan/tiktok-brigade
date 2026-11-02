@@ -1,14 +1,14 @@
 import json
 import os
 from datetime import datetime
-from pathlib import Path
 from io import BytesIO
+from pathlib import Path
 
-from django.core.management.base import BaseCommand
-from django.core.files.base import ContentFile
 from django.conf import settings
+from django.core.files.base import ContentFile
+from django.core.management.base import BaseCommand
 
-from tiktok.models import TikTokProfile, TikTokVideo, TikTokComment, Group, Export
+from tiktok.models import Export, Group, TikTokComment, TikTokProfile, TikTokVideo
 
 
 class Command(BaseCommand):
@@ -48,49 +48,33 @@ class Command(BaseCommand):
         # Convert to JSON string
         self.stdout.write("Preparing export file...")
         json_data = json.dumps(export_data, indent=2, ensure_ascii=False)
-        json_bytes = json_data.encode('utf-8')
+        json_bytes = json_data.encode("utf-8")
         file_size_bytes = len(json_bytes)
         file_size_mb = file_size_bytes / (1024 * 1024)
-        
+
         # Create Export model instance and save to S3
         self.stdout.write("Uploading to S3...")
         export = Export.objects.create(
             file_size_bytes=file_size_bytes,
-            total_groups=export_data['statistics']['total_groups'],
-            total_profiles=export_data['statistics']['total_profiles'],
-            total_videos=export_data['statistics']['total_videos'],
-            total_comments=export_data['statistics']['total_comments'],
+            total_groups=export_data["statistics"]["total_groups"],
+            total_profiles=export_data["statistics"]["total_profiles"],
+            total_videos=export_data["statistics"]["total_videos"],
+            total_comments=export_data["statistics"]["total_comments"],
         )
-        
+
         # Save the file (will use S3 if configured)
         export.file.save(filename, ContentFile(json_bytes), save=True)
-        
+
         self.stdout.write(
             self.style.SUCCESS(
                 f"✓ Export complete: {export.file.name} ({file_size_mb:.2f} MB)"
             )
         )
-        self.stdout.write(
-            self.style.SUCCESS(
-                f"  - {export.total_profiles} profiles"
-            )
-        )
-        self.stdout.write(
-            self.style.SUCCESS(
-                f"  - {export.total_videos} videos"
-            )
-        )
-        self.stdout.write(
-            self.style.SUCCESS(
-                f"  - {export.total_comments} comments"
-            )
-        )
-        if hasattr(export.file, 'url'):
-            self.stdout.write(
-                self.style.SUCCESS(
-                    f"  - URL: {export.file.url}"
-                )
-            )
+        self.stdout.write(self.style.SUCCESS(f"  - {export.total_profiles} profiles"))
+        self.stdout.write(self.style.SUCCESS(f"  - {export.total_videos} videos"))
+        self.stdout.write(self.style.SUCCESS(f"  - {export.total_comments} comments"))
+        if hasattr(export.file, "url"):
+            self.stdout.write(self.style.SUCCESS(f"  - URL: {export.file.url}"))
 
     def _export_groups(self):
         """Export all groups."""

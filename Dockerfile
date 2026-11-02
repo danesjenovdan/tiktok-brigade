@@ -1,15 +1,41 @@
-FROM python:3.13-slim
+FROM python:3.14-slim AS builder
 
-RUN apt-get update
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /usr/local/bin/
 
-RUN /usr/local/bin/python -m pip install --upgrade pip
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /app
 WORKDIR /app
 
-COPY requirements.txt /app/
-RUN pip install -r requirements.txt
+ENV UV_COMPILE_BYTECODE=1 \
+	UV_LINK_MODE=copy \
+	UV_PYTHON_DOWNLOADS=0 \
+	UV_PROJECT_ENVIRONMENT=/opt/venv \
+	PATH="/opt/venv/bin:$PATH"
 
-COPY . /app
+# Install dependencies first (cached separately from app code changes).
+COPY pyproject.toml uv.lock ./
+RUN --mount=type=cache,target=/root/.cache/uv \
+	uv sync --locked --no-dev --no-install-project
+
+COPY . .
+
+RUN --mount=type=cache,target=/root/.cache/uv \
+	uv sync --locked --no-dev
+
+
+FROM python:3.14-slim AS runtime
+
+WORKDIR /app
+
+ENV UV_PROJECT_ENVIRONMENT=/opt/venv \
+	PATH="/opt/venv/bin:$PATH" \
+	DJANGO_SETTINGS_MODULE=tiktok_brigade.settings
+
+COPY --from=builder /opt/venv /opt/venv
+COPY --from=builder /app /app
 
 EXPOSE 8000
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
